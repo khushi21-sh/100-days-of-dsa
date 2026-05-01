@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100000
+
+int main() {
+    char s[MAX];
+    scanf("%s", s);
+
+    int freq[26] = {0};
+
+    // Step 1: count frequency
+    for (int i = 0; s[i] != '\0'; i++) {
+        freq[s[i] - 'a']++;
+    }
+
+    // Step 2: find first non-repeating
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (freq[s[i] - 'a'] == 1) {
+            printf("%c\n", s[i]);
+            return 0;
+        }
+    }
+
+    // Step 3: none found
+    printf("$\n");
+
+    return 0;
+}
